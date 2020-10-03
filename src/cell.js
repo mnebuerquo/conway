@@ -1,6 +1,6 @@
 import { translate } from './transform'
 
-export const cell = (neighborCount, initialState) =>
+export const evaluateCell = (neighborCount, initialState) =>
   (initialState && neighborCount >= 2 && neighborCount <= 3) ||
   neighborCount === 3
 

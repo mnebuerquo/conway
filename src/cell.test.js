@@ -1,27 +1,27 @@
-import { cell, listNeighbors } from './cell'
+import { evaluateCell, listNeighbors } from './cell'
 
-describe('cell', () => {
+describe('evaluateCell', () => {
   it('dies of underpopulation', () => {
-    expect(cell(1, true)).toBeFalsy()
-    expect(cell(1, false)).toBeFalsy()
-    expect(cell(0, true)).toBeFalsy()
+    expect(evaluateCell(1, true)).toBeFalsy()
+    expect(evaluateCell(1, false)).toBeFalsy()
+    expect(evaluateCell(0, true)).toBeFalsy()
   })
 
   it('dies of overpopulation', () => {
-    expect(cell(4, true)).toBeFalsy()
-    expect(cell(5, false)).toBeFalsy()
-    expect(cell(6, true)).toBeFalsy()
+    expect(evaluateCell(4, true)).toBeFalsy()
+    expect(evaluateCell(5, false)).toBeFalsy()
+    expect(evaluateCell(6, true)).toBeFalsy()
   })
 
   it('stays alive with the right number of neighbors', () => {
-    expect(cell(2, true)).toBeTruthy()
-    expect(cell(2, false)).toBeFalsy()
-    expect(cell(3, true)).toBeTruthy()
+    expect(evaluateCell(2, true)).toBeTruthy()
+    expect(evaluateCell(2, false)).toBeFalsy()
+    expect(evaluateCell(3, true)).toBeTruthy()
   })
 
   it('reproduces with exactly three neighbors', () => {
-    expect(cell(3, true)).toBeTruthy()
-    expect(cell(3, false)).toBeTruthy()
+    expect(evaluateCell(3, true)).toBeTruthy()
+    expect(evaluateCell(3, false)).toBeTruthy()
   })
 
   it('can figure out its neighbors addresses', () => {
