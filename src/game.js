@@ -1,3 +1,5 @@
-export const cell = (neighborCount, initialState) =>
-  (initialState && neighborCount >= 2 && neighborCount <= 3) ||
-  neighborCount === 3
+//import { cell } from './cell'
+
+const reducefn = () => []
+
+export const game = (state) => state.reduce(reducefn, {})
