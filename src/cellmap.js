@@ -12,7 +12,7 @@ export const mapToArray = (cellMap) =>
   Object.keys(cellMap)
     .map((x) =>
       Object.keys(cellMap[x])
-        .filter((y) => y)
-        .map((y) => [x, y])
+        .filter(y => cellMap[x][y])
+        .map((y) => [x, y].map(n=>parseInt(n)))
     )
     .reduce((list, next) => list.concat(next), [])
