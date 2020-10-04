@@ -1,4 +1,4 @@
-import { insertCell, arrayToMap, mapToArray, lookupCell } from './cellmap'
+import { insertCell, arrayToMap, mapToArray, lookupCell, isCellEvaluated } from './cellmap'
 
 const arrayOfCells = [
   [1, 1],
@@ -6,6 +6,10 @@ const arrayOfCells = [
   [2, 3],
 ]
 const mapOfCells = { 1: { 1: true }, 2: { 1: true, 3: true } }
+const mapWithDeadCells = {
+  1: { 1: true },
+  2: { 1: true, 3: true, 5: false },
+}
 
 describe('cellmap', () => {
   it('can insert cells into the map', () => {
@@ -21,10 +25,6 @@ describe('cellmap', () => {
   })
 
   it('converts from map to array', () => {
-    const mapWithDeadCells = {
-      1: { 1: true },
-      2: { 1: true, 3: true, 5: false },
-    }
     expect(mapToArray(mapOfCells)).toStrictEqual(arrayOfCells)
     expect(mapToArray(mapWithDeadCells)).toStrictEqual(arrayOfCells)
   })
@@ -33,5 +33,12 @@ describe('cellmap', () => {
     const get = lookupCell(mapOfCells)
     expect(get([1, 4])).toBeFalsy()
     expect(get([2, 3])).toBeTruthy()
+  })
+
+  it('can tell if we already added a value for a cell', () => {
+    expect(isCellEvaluated(mapWithDeadCells, [1, 1])).toBeTruthy()
+    expect(isCellEvaluated(mapWithDeadCells, [2, 5])).toBeTruthy()
+    expect(isCellEvaluated(mapWithDeadCells, [4, 1])).toBeFalsy()
+    expect(isCellEvaluated(mapWithDeadCells, [1, 4])).toBeFalsy()
   })
 })

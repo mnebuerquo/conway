@@ -5,6 +5,7 @@ import {
   insertCell,
   lookupCell,
   updateCell,
+  isCellEvaluated,
 } from './cellmap'
 
 // game takes an initial state and returns a new state
@@ -19,12 +20,17 @@ export const game = state => {
     // process all the neighbors of the cell, in case they come to life
     const listToEvaluate = [...listNeighbors(inputCell), inputCell]
     return listToEvaluate.reduce((newMap, cell) => {
+      // Since we're looking at all neighbors as we go, don't re-evaluate a
+      // cell if we've already hit it once.
+      if( isCellEvaluated(newMap, cell) ){
+        return newMap
+      }
       // count neighbors of the cell
       const neighborCount = listNeighbors(cell)
         .map(getValue)
         .filter(Boolean).length
-      const newValue = evaluateCell(neighborCount, getValue(cell))
-      return updateCell(newMap, cell, newValue)
+      // now we can evaluate and update cell
+      return updateCell(newMap, cell, evaluateCell(neighborCount, getValue(cell)))
     }, outputMap)
   }, {})
   return mapToArray(finishedMap)
