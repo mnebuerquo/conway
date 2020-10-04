@@ -1,4 +1,10 @@
-import { insertCell, arrayToMap, mapToArray, lookupCell, isCellEvaluated } from './cellmap'
+import {
+  insertCell,
+  arrayToMap,
+  mapToArray,
+  lookupCell,
+  isCellEvaluated,
+} from './cellmap'
 
 const arrayOfCells = [
   [1, 1],

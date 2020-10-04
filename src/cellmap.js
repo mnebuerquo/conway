@@ -23,5 +23,4 @@ export const lookupCell = cellMap => ([x, y]) =>
   (cellMap[x] && cellMap[x][y]) || false
 
 export const isCellEvaluated = (cellMap, [x, y]) =>
-  (cellMap[x] && cellMap[x][y] !== undefined ) || false
-  //Object.keys(cellMap).includes(x) && Object.keys(cellMap[x]).includes(y)
+  (cellMap[x] && cellMap[x][y] !== undefined) || false

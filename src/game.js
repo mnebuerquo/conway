@@ -22,7 +22,7 @@ export const game = state => {
     return listToEvaluate.reduce((newMap, cell) => {
       // Since we're looking at all neighbors as we go, don't re-evaluate a
       // cell if we've already hit it once.
-      if( isCellEvaluated(newMap, cell) ){
+      if (isCellEvaluated(newMap, cell)) {
         return newMap
       }
       // count neighbors of the cell
@@ -30,7 +30,11 @@ export const game = state => {
         .map(getValue)
         .filter(Boolean).length
       // now we can evaluate and update cell
-      return updateCell(newMap, cell, evaluateCell(neighborCount, getValue(cell)))
+      return updateCell(
+        newMap,
+        cell,
+        evaluateCell(neighborCount, getValue(cell))
+      )
     }, outputMap)
   }, {})
   return mapToArray(finishedMap)
