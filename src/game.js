@@ -34,7 +34,7 @@ export const printGame = state => {
   const cellMap = arrayToMap(state)
   const getValue = lookupCell(cellMap)
   const width = 20
-  const height= 20
+  const height = 20
   const live = ' H '
   const dead = ' . '
   const hwall = '---'
@@ -42,15 +42,15 @@ export const printGame = state => {
   const rows = [...Array(height).keys()]
   const cols = [...Array(width).keys()]
   const output = []
-  output.push( '+' + hwall.repeat(cols.length) + '+' )
-  rows.map( y => {
+  output.push('+' + hwall.repeat(cols.length) + '+')
+  rows.map(y => {
     const next = [vwall]
-    cols.map( x => {
-      next.push(getValue([x,y])? live : dead)
+    cols.map(x => {
+      next.push(getValue([x, y]) ? live : dead)
     })
     next.push(vwall)
     output.push(next.join(''))
   })
-  output.push( '+' + hwall.repeat(cols.length) + '+' )
+  output.push('+' + hwall.repeat(cols.length) + '+')
   console.log(output.join('\n'))
 }

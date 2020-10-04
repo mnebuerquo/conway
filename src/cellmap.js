@@ -1,5 +1,4 @@
-export const updateCell = (cellMap = {}, [x, y], value = false) => (
-  {
+export const updateCell = (cellMap = {}, [x, y], value = false) => ({
   ...cellMap,
   [x]: {
     ...(cellMap[x] || {}),
