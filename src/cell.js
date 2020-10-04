@@ -4,7 +4,7 @@ export const evaluateCell = (neighborCount, initialState) =>
   (initialState && neighborCount >= 2 && neighborCount <= 3) ||
   neighborCount === 3
 
-export const listNeighbors = (x, y) =>
+export const listNeighbors = ([x, y]) =>
   [
     [-1, -1],
     [-1, 0],

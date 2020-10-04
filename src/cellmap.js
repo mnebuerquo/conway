@@ -1,16 +1,17 @@
-export const insertCell = (cellMap, cell) => updateCell(cellMap, cell, true)
-
-export const updateCell = (cellMap, [x, y], value) => ({
+export const updateCell = (cellMap = {}, [x, y], value = false) => (
+  {
   ...cellMap,
   [x]: {
     ...(cellMap[x] || {}),
-    [y]: true,
+    [y]: value,
   },
 })
 
+export const insertCell = (cellMap, cell) => updateCell(cellMap, cell, true)
+
 export const arrayToMap = cellList => cellList.reduce(insertCell, {})
 
-export const mapToArray = cellMap =>
+export const mapToArray = (cellMap = {}) =>
   Object.keys(cellMap)
     .map(x =>
       Object.keys(cellMap[x])

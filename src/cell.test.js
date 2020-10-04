@@ -25,7 +25,7 @@ describe('evaluateCell', () => {
   })
 
   it('can figure out its neighbors addresses', () => {
-    expect(listNeighbors(5, 7)).toStrictEqual([
+    expect(listNeighbors([5, 7])).toStrictEqual([
       [4, 6],
       [4, 7],
       [4, 8],

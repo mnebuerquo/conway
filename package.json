@@ -4,7 +4,8 @@
   "description": "Retrium developer code challenge",
   "scripts": {
     "startx": "nodemon --exec babel-node src/game.test.js",
-    "start": "jest --config ./jest.config.json --watchAll"
+    "start": "jest --config ./jest.config.json --watchAll",
+    "pretty": "npx prettier --write src/**/*.js"
   },
   "repository": {
     "type": "git",
