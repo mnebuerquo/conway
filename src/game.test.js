@@ -1,7 +1,7 @@
 import { game, printGame } from './game'
 
 describe('game', () => {
-  it.only('plays the game', () => {
+  it('plays the game', () => {
     const initial = [
       [3, 2],
       [4, 2],
